@@ -91,7 +91,7 @@ formData.append('folder',selfolder?.id||'')
   
       const data = await response.json();
       if (data.fileId) {
-        setImages((prev)=>[...prev,data])
+        setImages((prev)=>[data,...prev])
        
        
       }
