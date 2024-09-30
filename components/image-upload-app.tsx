@@ -24,7 +24,7 @@ import { CarouselDemo } from './image-carousel';
 import { ImageCarouselDialogComponent } from './image-carousel-dialog';
 export function ImageUploadApp({imagess}:any) {
   const [selectedImages, setSelectedImages] = useState<string[]>([])
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
   // const [imagees, setImageess] = useState(imagess.images||[])
 const [images, setImages] =useState(imagess.images||[])
