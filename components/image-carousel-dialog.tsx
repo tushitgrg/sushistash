@@ -9,7 +9,7 @@ import { Popover, PopoverTrigger, PopoverContent } from '@nextui-org/popover'
 
 
 export function ImageCarouselDialogComponent({currentIndex, setCurrentIndex,images, btnref }) {
-  console.log(images)
+  // console.log(images)
 
 
  

@@ -14,7 +14,7 @@ import { Download, Link } from "lucide-react"
 
 const currentDomain = 'https://sushistash.vercel.app'
 export function CarouselDemo({images}) {
-    console.log(images)
+    // console.log(images)
   return (
    
     <Carousel className="w-full flex justify-center align-middle max-h-screen">
