@@ -1,0 +1,27 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+
+}
+
+model Image {
+  id        String     @default(cuid()) @id
+  fileId    String     @unique 
+  email     String     
+  imageName  String
+  folderid     String?
+  
+  createdAt  DateTime   @default(now())
+
+}
+model folder {
+   id        String     @default(cuid()) @id
+   name      String
+   email     String  
+}
