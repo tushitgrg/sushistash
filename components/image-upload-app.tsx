@@ -62,7 +62,7 @@ useEffect(()=>{
 
 
   const [folders, setfolders] =  useState(imagess.folders||[])
- const currentDomain = 'http://localhost:3000'
+ const currentDomain = 'https://sushistash.vercel.app'
 
 const fileref = useRef(null)
   useEffect(() => {

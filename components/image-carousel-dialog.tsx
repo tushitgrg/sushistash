@@ -21,7 +21,7 @@ export function ImageCarouselDialogComponent({currentIndex, setCurrentIndex,imag
   const prevImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
   }
-const currentDomain = 'http://localhost:3000'
+const currentDomain = 'https://sushistash.vercel.app'
   return (
     <Dialog>
       <DialogTrigger asChild>

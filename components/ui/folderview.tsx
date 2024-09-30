@@ -40,7 +40,7 @@ useEffect(()=>{
   },[selectAll])
 
 
- const currentDomain = 'http://localhost:3000'
+ const currentDomain = 'https://sushistash.vercel.app'
 
   useEffect(() => {
     const isDark = localStorage.getItem('darkMode') === 'true'

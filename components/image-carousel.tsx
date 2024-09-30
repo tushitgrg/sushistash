@@ -12,7 +12,7 @@ import { Button } from "./ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/popover"
 import { Download, Link } from "lucide-react"
 
-const currentDomain = 'http://localhost:3000'
+const currentDomain = 'https://sushistash.vercel.app'
 export function CarouselDemo({images}) {
     console.log(images)
   return (
