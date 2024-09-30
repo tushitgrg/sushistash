@@ -38,7 +38,7 @@ if(selectAll){
  
  
   setSelectedImages(images.map((img)=> {
-   if (!selfolder.id || selfolder.id==img.folderid) return img.id.toString()
+   if (!selfolder || selfolder.id==img.folderid) return img.id.toString()
   } ))
  
 
@@ -52,7 +52,7 @@ if(selectAll){
 useEffect(()=>{
   if(selectAll) setselectAll(false)
     const dim = imagess.images.map((img)=> {
-      if (!selfolder.id || selfolder.id==img.folderid) return img
+      if (!selfolder || selfolder.id==img.folderid) return img
      } )
 
     setImages(dim.filter((img)=>img!=undefined))
@@ -228,7 +228,7 @@ const moveAll =  (folder)=>{
         
        
         <ScrollArea className="h-[calc(100vh-12rem)]">
-        <Button key={'219u2nsaasjasj'} variant="ghost" className="w-full justify-start mb-2 dark:text-gray-300 dark:hover:text-white" onClick={()=>setselfolder('')}>
+        <Button key={'219u2nsaasjasj'} variant="ghost" className="w-full justify-start mb-2 dark:text-gray-300 dark:hover:text-white" onClick={()=>setselfolder(null)}>
               <Folder className="mr-2 h-4 w-4" />
               All Images
             </Button>
@@ -382,7 +382,7 @@ onChange={uploadImage}
         {/* Image Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images && images.length>0? images.map((image,indexx) =>{
- if(!selfolder.id || selfolder.id==image.folderid) return (
+ if(!selfolder|| selfolder.id==image.folderid) return (
   <motion.div 
     key={image.id} 
     className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md " 
