@@ -8,7 +8,11 @@ import {
 import './globals.css'
 import { Toaster } from '@/components/ui/sonner'
 import { motion } from 'framer-motion'
-
+import { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: "Sushi Stash",
+  description: "Unlimited Image Storage for free!",
+};
 export default function RootLayout({
   children,
 }: {
