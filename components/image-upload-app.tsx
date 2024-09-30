@@ -466,7 +466,7 @@ onChange={uploadImage}
       </div>
       <BlurredOverlayLoadingComponent isLoading={isLoading}/>
 
-     <ImageCarouselDialogComponent currentIndex={carouselIndex} setCurrentIndex={setcarouselIndex} btnref={carouselref} images={images}/>
+   {images.length>0? <ImageCarouselDialogComponent currentIndex={carouselIndex} setCurrentIndex={setcarouselIndex} btnref={carouselref} images={images}/>:''} 
 
 
 
