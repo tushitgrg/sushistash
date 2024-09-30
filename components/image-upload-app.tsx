@@ -84,7 +84,7 @@ if(!file || file.length<=0) alert("Upload")
       formData.append('file', file[i]);
 formData.append('folder',selfolder?.id||'')
     
-      const response = await fetch('/api/telegram/upload', {
+      const response = await fetch('/api/image-c/upload', {
         method: 'POST',
         body: formData,
       });
