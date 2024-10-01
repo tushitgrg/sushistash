@@ -63,7 +63,7 @@ const [isOpen, setIsOpen] = useState(false)
 
 
   const [folders, setfolders] =  useState(imagess.folders||[])
-const currentDomain = 'http://localhost:3000'
+const currentDomain = 'https://sushistash.tushitgarg.com'
 
 const fileref = useRef(null)
   useEffect(() => {
