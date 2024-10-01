@@ -11,7 +11,7 @@ const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/send
 async function uploadImageToTelegram(imageBuffer, filename,user,folder) {
   const formData = new FormData();
   formData.append('chat_id', TELEGRAM_CHAT_ID);
-  formData.append('document', new Blob([imageBuffer], { type: 'image/jpeg' }), filename);
+  formData.append('document', new Blob([imageBuffer], { type: 'image/jpeg' }), `${Math.floor (Math.random() *10000)}${filename}`);
   formData.append('caption', `${user.emailAddresses[0].emailAddress}  ${filename}`);
   const response = await fetch(TELEGRAM_API_URL, {
     method: 'POST',

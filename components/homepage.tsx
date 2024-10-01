@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Cloud, Upload, Infinity, Lock, Share2 } from 'lucide-react'
 import Link from 'next/link'
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+
 
 export function Homepage() {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
@@ -23,15 +25,27 @@ export function Homepage() {
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
+            <Link href={'/'} className='flex items-center space-x-2'>
             <Cloud className="h-8 w-8 text-blue-400" />
+        
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
               Sushi Stash
             </span>
+            </Link>
           </motion.div>
-          <div className="space-x-2">
+          <div className="space-x-2 gap-4 flex items-center">
+          <Link href={'/docs'}>
+           Docs
+            </Link>
+            <SignedIn>
+              <UserButton/>
+            </SignedIn>
+<SignedOut>
+
           <Link href={'/sign-in'}>
             <Button className="bg-blue-500 hover:bg-blue-600">Login</Button>
             </Link>
+            </SignedOut>
           </div>
         </nav>
       </motion.header>
@@ -64,7 +78,7 @@ export function Homepage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {[
             { icon: <Infinity className="h-12 w-12 text-blue-400" />, title: "Unlimited Storage", description: "Upload as many images as you want, we've got space for all your memories." },
-            { icon: <Lock className="h-12 w-12 text-purple-400" />, title: "Secure Storage", description: "Your images are encrypted and stored safely in our secure cloud infrastructure." },
+            { icon: <Lock className="h-12 w-12 text-purple-400" />, title: "API Key", description: "Use Sushi Stash's API for your Personal Projects, Without Worrying About any Costs!" },
             { icon: <Share2 className="h-12 w-12 text-pink-400" />, title: "Easy Sharing", description: "Share your images or entire albums with friends and family in just a few clicks." }
           ].map((feature, index) => (
             <motion.div

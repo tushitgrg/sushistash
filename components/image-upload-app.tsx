@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuPortal, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Download, Link, MoreVertical, Folder, Image, Upload, Trash, Moon, Sun, Plus, User, UserPlus } from 'lucide-react'
+import { Download, Link, MoreVertical, Folder, Image, Upload, Trash, Moon, Sun, Plus, User, UserPlus, ChevronsUpDown, Cloud } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SignedOut, SignInButton, SignedIn, UserButton, RedirectToSignIn } from '@clerk/nextjs'
 import {Popover, PopoverTrigger, PopoverContent} from "@nextui-org/popover";
@@ -22,6 +22,8 @@ import { FileUpload } from './ui/file-upload';
 
 import { CarouselDemo } from './image-carousel';
 import { ImageCarouselDialogComponent } from './image-carousel-dialog';
+import { Snippet } from '@nextui-org/snippet';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 export function ImageUploadApp({imagess}:any) {
   const [selectedImages, setSelectedImages] = useState<string[]>([])
   const [isDarkMode, setIsDarkMode] = useState(true)
@@ -41,8 +43,6 @@ if(selectAll){
    if (!selfolder || selfolder.id==img.folderid) return img.id.toString()
   } ))
  
-
- 
 }else{
   setSelectedImages([])
 }
@@ -59,10 +59,11 @@ useEffect(()=>{
 
 
 },[selfolder])
+const [isOpen, setIsOpen] = useState(false)
 
 
   const [folders, setfolders] =  useState(imagess.folders||[])
- const currentDomain = 'https://sushistash.vercel.app'
+const currentDomain = 'http://localhost:3000'
 
 const fileref = useRef(null)
   useEffect(() => {
@@ -219,7 +220,14 @@ const moveAll =  (folder)=>{
           <SignedIn>
             <UserButton />
           </SignedIn>
-   <a href="/"> <h2 className="text-xl font-bold dark:text-white">Sushi Stash</h2></a> 
+
+    <a href='/' className='flex  space-x-2'>
+            <Cloud className="h-8 w-8 text-blue-400" />
+        
+            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+              Sushi Stash
+            </span>
+            </a>
       <Button size="icon" variant="ghost" onClick={toggleSidebar} className="md:hidden">
         <MoreVertical className="h-4 w-4" />
       </Button>
@@ -228,6 +236,20 @@ const moveAll =  (folder)=>{
         
        
         <ScrollArea className="h-[calc(100vh-12rem)]">
+        <Popover placement="right">
+<PopoverTrigger>
+<Button  variant="default"  onClick={()=>navigator.clipboard.writeText(`${imagess.Apikey}`)} className="w-full justify-center ">
+        API Key
+        </Button>
+</PopoverTrigger>
+<PopoverContent>
+<div className="px-1 py-2">
+<div className="text-small font-bold">Copied</div>
+
+</div>
+</PopoverContent>
+</Popover>
+ <p className='my-4'> Note:- Api Key changes frequently, All the previous keys will still function!</p>
         <Button key={'219u2nsaasjasj'} variant="ghost" className="w-full justify-start mb-2 dark:text-gray-300 dark:hover:text-white" onClick={()=>setselfolder(null)}>
               <Folder className="mr-2 h-4 w-4" />
               All Images
@@ -293,7 +315,9 @@ const moveAll =  (folder)=>{
             </Button>
             <Checkbox id='checkedAll'  checked={selectAll} onCheckedChange={()=>setselectAll((prev)=>!prev)}/>
             <h1 className="text-3xl font-bold dark:text-white"> {selfolder?selfolder.name:"All Images"}</h1>
+          
           </div>
+
           <div className="flex space-x-2">
             <Input id="picture" type="file" className="hidden" />
             <Label htmlFor="picture" className="cursor-pointer">
@@ -302,17 +326,20 @@ const moveAll =  (folder)=>{
         hidden
 ref={fileref}
 
-
 onChange={uploadImage}
         multiple
         accept="image/*"
       />
-              <Button onClick={()=>fileref.current.click()}>
-                <Upload className="mr-2 h-4 w-4" /> Upload Image
-              </Button>
+
+    
         
              
             </Label>
+        
+     
+              <Button onClick={()=>fileref.current.click()}>
+                <Upload className="mr-2 h-4 w-4" /> Upload Image
+              </Button>
             <Button 
               variant="outline" 
               size="icon" 
